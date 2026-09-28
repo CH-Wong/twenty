@@ -23,7 +23,11 @@ import {
   OnboardingStatus,
 } from '~/generated-metadata/graphql';
 import { messages } from '~/locales/generated/en';
-import { mockCurrentWorkspace } from '~/testing/mock-data/users';
+import { mockedClientConfig } from '~/testing/mock-data/config';
+import {
+  mockCurrentWorkspace,
+  mockedUserData,
+} from '~/testing/mock-data/users';
 
 i18n.load({ [SOURCE_LOCALE]: messages });
 i18n.activate(SOURCE_LOCALE);
@@ -77,9 +81,9 @@ const renderFreeCredits = (
 
 const setOnboardingStatus = (onboardingStatus: OnboardingStatus) =>
   jotaiStore.set(currentUserState.atom, {
-    id: 'user-id',
+    ...mockedUserData,
     onboardingStatus,
-  } as never);
+  });
 
 const markCreditsAsSeen = (credits: number) =>
   jotaiStore.set(onboardingSeenFreeCreditsByWorkspaceIdState.atom, {
@@ -155,7 +159,7 @@ describe('OnboardingFreeCredits', () => {
   });
 
   it('should leave the trial picked by default out of the +X on the last step', async () => {
-    jotaiStore.set(billingState.atom, { isBillingEnabled: true } as never);
+    jotaiStore.set(billingState.atom, mockedClientConfig.billing);
     jotaiStore.set(currentWorkspaceState.atom, {
       ...mockCurrentWorkspace,
       billingSubscriptions: [],

@@ -22,7 +22,10 @@ import {
   OnboardingStatus,
 } from '~/generated-metadata/graphql';
 import { messages } from '~/locales/generated/en';
-import { mockCurrentWorkspace } from '~/testing/mock-data/users';
+import {
+  mockCurrentWorkspace,
+  mockedUserData,
+} from '~/testing/mock-data/users';
 
 jest.mock(
   '@/onboarding/effect-components/PrefetchPlanRequiredStepEffect',
@@ -80,9 +83,9 @@ const renderOnboardingStepLayout = (totalCredits: number) =>
 
 const setOnboardingStatus = (onboardingStatus: OnboardingStatus) =>
   jotaiStore.set(currentUserState.atom, {
-    id: 'user-id',
+    ...mockedUserData,
     onboardingStatus,
-  } as never);
+  });
 
 describe('OnboardingStepLayout', () => {
   beforeEach(() => {

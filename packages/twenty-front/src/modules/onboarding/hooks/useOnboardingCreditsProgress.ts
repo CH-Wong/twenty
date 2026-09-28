@@ -2,6 +2,7 @@ import { billingCheckoutSessionState } from '@/auth/states/billingCheckoutSessio
 import { currentUserState } from '@/auth/states/currentUserState';
 import { currentWorkspaceState } from '@/auth/states/currentWorkspaceState';
 import { type OnboardingConfig } from '@/client-config/types/OnboardingConfig';
+import { useIsFirstWorkspaceMember } from '@/onboarding/hooks/useIsFirstWorkspaceMember';
 import { useIsPlanRequired } from '@/onboarding/hooks/useIsPlanRequired';
 import { useOnboardingCreditRewards } from '@/onboarding/hooks/useOnboardingCreditRewards';
 import { getOnboardingCreditsProgress } from '@/onboarding/utils/getOnboardingCreditsProgress';
@@ -13,6 +14,7 @@ export const useOnboardingCreditsProgress = (
 ) => {
   const creditRewards = useOnboardingCreditRewards();
   const isPlanRequired = useIsPlanRequired();
+  const isFirstWorkspaceMember = useIsFirstWorkspaceMember();
   const currentUser = useAtomStateValue(currentUserState);
   const currentWorkspace = useAtomStateValue(currentWorkspaceState);
   const billingCheckoutSession = useAtomStateValue(billingCheckoutSessionState);
@@ -25,7 +27,7 @@ export const useOnboardingCreditsProgress = (
     creditRewards,
     onboardingConfig,
     onboardingStatus: currentUser?.onboardingStatus,
-    isFirstWorkspaceMember: currentWorkspace.workspaceMembersCount === 1,
+    isFirstWorkspaceMember,
     isPlanRequired,
     onboardingDraftCredits: {
       upgradeTrial: billingCheckoutSession.requirePaymentMethod

@@ -87,8 +87,8 @@ export const FirstStep: Story = {
     await expect(
       popover.getByText('1 credit is enough for one of these on average'),
     ).toBeVisible();
-    await expect(popover.getByText('Connect your email')).toBeVisible();
-    await expect(popover.queryByText('Install apps')).not.toBeInTheDocument();
+    await expect(popover.getByText('Total earned')).toBeVisible();
+    await expect(popover.queryByText('Breakdown')).not.toBeInTheDocument();
   },
 };
 
@@ -124,7 +124,7 @@ export const EarnedAndPending: Story = {
     await expect(
       popover.getByText('Enough for one of these on average'),
     ).toBeVisible();
-    await expect(popover.getByText('+1.5')).toBeVisible();
-    await expect(popover.getByText('2 invites pending')).toBeVisible();
+    await expect(popover.getByText('1.5')).toBeVisible();
+    await expect(popover.getByText('1/5')).toBeVisible();
   },
 };
