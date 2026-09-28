@@ -4,5 +4,5 @@ import { useAtomStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomState
 export const useIsFirstWorkspaceMember = () => {
   const currentUser = useAtomStateValue(currentUserState);
 
-  return currentUser?.isWorkspaceCreator === true;
+  return currentUser?.isWorkspaceCreator ?? false;
 };

@@ -39,11 +39,7 @@ export const useOnboardingFreeCreditsChangeAnimation = ({
 
     await Promise.all([
       animateOpacity(element, 0, { duration: 0.2 }),
-      animate(
-        element,
-        { y: shouldReduceMotion === true ? 0 : -8 },
-        { duration: 0.2 },
-      ),
+      animate(element, { y: shouldReduceMotion ? 0 : -8 }, { duration: 0.2 }),
     ]);
   };
 
@@ -55,8 +51,8 @@ export const useOnboardingFreeCreditsChangeAnimation = ({
       animate(
         element,
         {
-          scale: [shouldReduceMotion === true ? 1 : 0.6, 1],
-          x: [shouldReduceMotion === true ? 0 : 8, 0],
+          scale: [shouldReduceMotion ? 1 : 0.6, 1],
+          x: [shouldReduceMotion ? 0 : 8, 0],
         },
         {
           delay,

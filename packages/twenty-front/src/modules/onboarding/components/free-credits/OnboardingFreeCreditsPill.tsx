@@ -145,7 +145,7 @@ export const OnboardingFreeCreditsPill = ({
   const { formatNumber } = useNumberFormat();
   const [isPopoverShown, setIsPopoverShown] = useState(false);
   const [hasTrackGrown, setHasTrackGrown] = useState(
-    shouldReduceMotion === true,
+    shouldReduceMotion ?? false,
   );
   const [displayedTooltipContent, setDisplayedTooltipContent] =
     useState<OnboardingFreeCreditsTooltipContent | null>(null);
