@@ -82,6 +82,7 @@ const renderFreeCredits = (
 const setOnboardingStatus = (onboardingStatus: OnboardingStatus) =>
   jotaiStore.set(currentUserState.atom, {
     ...mockedUserData,
+    isWorkspaceCreator: true,
     onboardingStatus,
   });
 
