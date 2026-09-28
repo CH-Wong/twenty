@@ -2,12 +2,7 @@ import { act, renderHook } from '@testing-library/react';
 import { Provider as JotaiProvider } from 'jotai';
 import { createElement } from 'react';
 
-import { onboardingConfigState } from '@/client-config/states/onboardingConfigState';
-import { type OnboardingConfig } from '@/client-config/types/OnboardingConfig';
 import { useInstallOnboardingApps } from '@/onboarding/hooks/useInstallOnboardingApps';
-import { onboardingFreeCreditsState } from '@/onboarding/states/onboardingFreeCreditsState';
-import { useAtomStateValue } from '@/ui/utilities/state/jotai/hooks/useAtomStateValue';
-import { useSetAtomState } from '@/ui/utilities/state/jotai/hooks/useSetAtomState';
 import {
   jotaiStore,
   resetJotaiStore,
@@ -20,39 +15,14 @@ jest.mock('@/onboarding/hooks/useTriggerInstallAppsOnboardingStep', () => ({
     mockTriggerInstallAppsOnboardingStep,
 }));
 
-const onboardingConfig: OnboardingConfig = {
-  importContactsCreditsReward: 2,
-  inviteTeamCreditsRewardPerUser: 3,
-  installAppsCreditsReward: 1,
-  createProfileCreditsReward: 0.5,
-  upgradeCreditsReward: 5,
-  inviteTeamMaxInvites: 3,
-};
-
 const Wrapper = ({ children }: { children: React.ReactNode }) =>
   createElement(JotaiProvider, { store: jotaiStore }, children);
 
 const renderInstallHook = () => {
   const { result } = renderHook(
-    () => {
-      const setOnboardingConfig = useSetAtomState(onboardingConfigState);
-      const onboardingFreeCredits = useAtomStateValue(
-        onboardingFreeCreditsState,
-      );
-      const installOnboardingApps = useInstallOnboardingApps();
-
-      return {
-        setOnboardingConfig,
-        onboardingFreeCredits,
-        installOnboardingApps,
-      };
-    },
+    () => ({ installOnboardingApps: useInstallOnboardingApps() }),
     { wrapper: Wrapper },
   );
-
-  act(() => {
-    result.current.setOnboardingConfig(onboardingConfig);
-  });
 
   return result;
 };
@@ -64,7 +34,7 @@ describe('useInstallOnboardingApps', () => {
     mockTriggerInstallAppsOnboardingStep.mockReset();
   });
 
-  it('should credit the selected apps once the step succeeds', async () => {
+  it('should install the selected apps once the step succeeds', async () => {
     mockTriggerInstallAppsOnboardingStep.mockResolvedValue(undefined);
 
     const result = renderInstallHook();
@@ -84,10 +54,9 @@ describe('useInstallOnboardingApps', () => {
       universalIdentifiers: ['app-1', 'app-2'],
       isAutoSkipped: false,
     });
-    expect(result.current.onboardingFreeCredits.installApps).toBe(1);
   });
 
-  it('should reset the completing state and not credit when the step fails', async () => {
+  it('should reset the completing state when the step fails', async () => {
     mockTriggerInstallAppsOnboardingStep.mockRejectedValue(
       new Error('network error'),
     );
@@ -103,7 +72,6 @@ describe('useInstallOnboardingApps', () => {
     });
 
     expect(result.current.installOnboardingApps.isCompleting).toBe(false);
-    expect(result.current.onboardingFreeCredits.installApps).toBe(0);
   });
 
   it('should allow retrying after a failed attempt', async () => {
@@ -126,7 +94,6 @@ describe('useInstallOnboardingApps', () => {
     });
 
     expect(mockTriggerInstallAppsOnboardingStep).toHaveBeenCalledTimes(2);
-    expect(result.current.onboardingFreeCredits.installApps).toBe(1);
   });
 
   it('should ignore a second submission while one is already in flight', async () => {
