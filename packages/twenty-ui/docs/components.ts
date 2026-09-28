@@ -3,6 +3,7 @@ import { AVATAR_PROP_DESCRIPTIONS } from './avatarPropDescriptions';
 import { BANNER_PROP_DESCRIPTIONS } from './bannerPropDescriptions';
 import { BUTTON_GROUP_PROP_DESCRIPTIONS } from './buttonGroupPropDescriptions';
 import { BUTTON_PROP_DESCRIPTIONS } from './buttonPropDescriptions';
+import { CALLOUT_PROP_DESCRIPTIONS } from './calloutPropDescriptions';
 import { CARD_CONTENT_PROP_DESCRIPTIONS } from './cardContentPropDescriptions';
 import { CARD_FOOTER_PROP_DESCRIPTIONS } from './cardFooterPropDescriptions';
 import { CARD_HEADER_PROP_DESCRIPTIONS } from './cardHeaderPropDescriptions';
@@ -13,6 +14,7 @@ import { CLICK_TO_ACTION_LINK_PROP_DESCRIPTIONS } from './clickToActionLinkPropD
 import { CODE_EDITOR_HEADER_PROP_DESCRIPTIONS } from './codeEditorHeaderPropDescriptions';
 import { CODE_EDITOR_PROP_DESCRIPTIONS } from './codeEditorPropDescriptions';
 import { COLOR_SAMPLE_PROP_DESCRIPTIONS } from './colorSamplePropDescriptions';
+import { COLOR_SCHEME_PICKER_PROP_DESCRIPTIONS } from './colorSchemePickerPropDescriptions';
 import { DIALOG_PROP_DESCRIPTIONS } from './dialogPropDescriptions';
 import { DIALOG_TITLE_PROP_DESCRIPTIONS } from './dialogTitlePropDescriptions';
 import { HEADING_PROP_DESCRIPTIONS } from './headingPropDescriptions';
@@ -37,6 +39,20 @@ import { TOOLTIP_PROP_DESCRIPTIONS } from './tooltipPropDescriptions';
 import { VISIBILITY_HIDDEN_PROP_DESCRIPTIONS } from './visibilityHiddenPropDescriptions';
 
 export const DOCUMENTED_COMPONENTS = [
+  {
+    name: 'Callout',
+    source: 'components/feedback/Callout/Callout.tsx',
+    entryPoint: 'twenty-ui/components',
+    slug: 'components/callout',
+    propDescriptions: CALLOUT_PROP_DESCRIPTIONS,
+  },
+  {
+    name: 'ColorSchemePicker',
+    source: 'components/input/ColorSchemePicker/ColorSchemePicker.tsx',
+    entryPoint: 'twenty-ui/components',
+    slug: 'components/color-scheme-picker',
+    propDescriptions: COLOR_SCHEME_PICKER_PROP_DESCRIPTIONS,
+  },
   {
     name: 'VisibilityHidden',
     source: 'primitives/accessibility/components/VisibilityHidden.tsx',
@@ -246,6 +262,8 @@ export const DOCUMENTED_COMPONENTS = [
     entryPoint: 'twenty-ui/primitives/navigation',
     slug: 'navigation/list-item',
     propDescriptions: {
+      hotkeysJoinLabel:
+        'Text between shortcut keys. Defaults to `then`; pass an empty string to omit it.',
       actionsVisibility:
         'When trailing actions are visible: on hover and focus, or always.',
     },
@@ -294,6 +312,20 @@ export const DOCUMENTED_COMPONENTS = [
     source: 'primitives/surfaces/Menu/Menu.tsx',
     entryPoint: 'twenty-ui/primitives/surfaces',
     slug: 'surfaces/menu',
+    partPropDescriptions: {
+      Item: {
+        hotkeysJoinLabel: 'Text between shortcut keys. Defaults to `then`.',
+      },
+      CheckboxItem: {
+        hotkeysJoinLabel: 'Text between shortcut keys. Defaults to `then`.',
+      },
+      RadioItem: {
+        hotkeysJoinLabel: 'Text between shortcut keys. Defaults to `then`.',
+      },
+      SubmenuTrigger: {
+        hotkeysJoinLabel: 'Text between shortcut keys. Defaults to `then`.',
+      },
+    },
   },
   {
     name: 'Popover',
@@ -370,6 +402,20 @@ export const DOCUMENTED_COMPONENTS = [
     source: 'components/navigation/Dropdown/Dropdown.tsx',
     entryPoint: 'twenty-ui/components',
     slug: 'components/dropdown',
+    partPropDescriptions: {
+      ActionItem: {
+        hotkeysJoinLabel: 'Text between shortcut keys. Defaults to `then`.',
+      },
+      OptionItem: {
+        hotkeysJoinLabel: 'Text between shortcut keys. Defaults to `then`.',
+      },
+      Back: {
+        hotkeysJoinLabel: 'Text between shortcut keys. Defaults to `then`.',
+      },
+      SubmenuTrigger: {
+        hotkeysJoinLabel: 'Text between shortcut keys. Defaults to `then`.',
+      },
+    },
     parts: [
       'Root',
       'Trigger',

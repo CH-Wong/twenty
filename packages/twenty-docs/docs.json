@@ -618,6 +618,8 @@
                     "group": "Components",
                     "pages": [
                       "ui/components/overview",
+                      "ui/components/callout",
+                      "ui/components/color-scheme-picker",
                       "ui/components/input/main-button",
                       "ui/components/input/light-button",
                       "ui/components/input/icon-button",

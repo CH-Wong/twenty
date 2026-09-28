@@ -1,5 +1,124 @@
 [
   {
+    "name": "Callout",
+    "entryPoint": "twenty-ui/components",
+    "slug": "components/callout",
+    "props": [
+      {
+        "name": "action",
+        "type": "{ label: string; onClick: () => void; }",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional footer action with caller-owned label and click handler."
+      },
+      {
+        "name": "closeLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": "Close",
+        "description": "Accessible name of the dismiss button. Defaults to `Close`."
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Supporting text."
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Fills the available width."
+      },
+      {
+        "name": "Icon",
+        "type": "IconComponent",
+        "required": false,
+        "defaultValue": null,
+        "description": "Icon beside the heading."
+      },
+      {
+        "name": "isClosable",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Shows the dismiss button."
+      },
+      {
+        "name": "onClose",
+        "type": "(() => void)",
+        "required": false,
+        "defaultValue": null,
+        "description": "Called when the user dismisses the notice."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Heading text."
+      },
+      {
+        "name": "variant",
+        "type": "\"error\" | \"info\" | \"neutral\" | \"success\" | \"warning\"",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visual style of the notice."
+      }
+    ]
+  },
+  {
+    "name": "ColorSchemePicker",
+    "entryPoint": "twenty-ui/components",
+    "slug": "components/color-scheme-picker",
+    "props": [
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Class applied to the root."
+      },
+      {
+        "name": "darkLabel",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible label and accessible name of the dark choice."
+      },
+      {
+        "name": "lightLabel",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible label and accessible name of the light choice."
+      },
+      {
+        "name": "onChange",
+        "type": "(value: ColorScheme) => void",
+        "required": true,
+        "defaultValue": null,
+        "description": "Receives the selected scheme."
+      },
+      {
+        "name": "systemLabel",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible label and accessible name of the system choice."
+      },
+      {
+        "name": "value",
+        "type": "\"Dark\" | \"Light\" | \"System\"",
+        "required": true,
+        "defaultValue": null,
+        "description": "Selected color scheme."
+      }
+    ]
+  },
+  {
     "name": "VisibilityHidden",
     "entryPoint": "twenty-ui/primitives/accessibility",
     "slug": "accessibility/visibility-hidden",
@@ -3137,6 +3256,13 @@
         "description": "Keyboard shortcut keys displayed at the end of the row. Registering the\nshortcut is up to the application."
       },
       {
+        "name": "hotkeysJoinLabel",
+        "type": "string",
+        "required": false,
+        "defaultValue": null,
+        "description": "Text between shortcut keys. Defaults to `then`; pass an empty string to omit it."
+      },
+      {
         "name": "indicator",
         "type": "\"check\" | \"checkbox\" | \"none\"",
         "required": false,
@@ -4515,6 +4641,13 @@
             "description": "Keyboard shortcut keys displayed at the end of the row. Registering the\nshortcut is up to the application."
           },
           {
+            "name": "hotkeysJoinLabel",
+            "type": "string",
+            "required": false,
+            "defaultValue": null,
+            "description": "Text between shortcut keys. Defaults to `then`."
+          },
+          {
             "name": "label",
             "type": "string",
             "required": false,
@@ -4630,6 +4763,13 @@
             "required": false,
             "defaultValue": null,
             "description": "Keyboard shortcut keys displayed at the end of the row. Registering the\nshortcut is up to the application."
+          },
+          {
+            "name": "hotkeysJoinLabel",
+            "type": "string",
+            "required": false,
+            "defaultValue": null,
+            "description": "Text between shortcut keys. Defaults to `then`."
           },
           {
             "name": "label",
@@ -4801,6 +4941,13 @@
             "required": false,
             "defaultValue": null,
             "description": "Keyboard shortcut keys displayed at the end of the row. Registering the\nshortcut is up to the application."
+          },
+          {
+            "name": "hotkeysJoinLabel",
+            "type": "string",
+            "required": false,
+            "defaultValue": null,
+            "description": "Text between shortcut keys. Defaults to `then`."
           },
           {
             "name": "label",
@@ -5092,6 +5239,13 @@
             "required": false,
             "defaultValue": null,
             "description": "Keyboard shortcut keys displayed at the end of the row. Registering the\nshortcut is up to the application."
+          },
+          {
+            "name": "hotkeysJoinLabel",
+            "type": "string",
+            "required": false,
+            "defaultValue": null,
+            "description": "Text between shortcut keys. Defaults to `then`."
           },
           {
             "name": "label",
@@ -7035,6 +7189,13 @@
             "description": "Keyboard shortcut keys displayed at the end of the row. Registering the\nshortcut is up to the application."
           },
           {
+            "name": "hotkeysJoinLabel",
+            "type": "string",
+            "required": false,
+            "defaultValue": null,
+            "description": "Text between shortcut keys. Defaults to `then`."
+          },
+          {
             "name": "nativeButton",
             "type": "boolean",
             "required": false,
@@ -7136,6 +7297,13 @@
             "required": false,
             "defaultValue": null,
             "description": "Keyboard shortcut keys displayed at the end of the row. Registering the\nshortcut is up to the application."
+          },
+          {
+            "name": "hotkeysJoinLabel",
+            "type": "string",
+            "required": false,
+            "defaultValue": null,
+            "description": "Text between shortcut keys. Defaults to `then`."
           },
           {
             "name": "indicator",
@@ -7392,6 +7560,13 @@
             "description": "Keyboard shortcut keys displayed at the end of the row. Registering the\nshortcut is up to the application."
           },
           {
+            "name": "hotkeysJoinLabel",
+            "type": "string",
+            "required": false,
+            "defaultValue": null,
+            "description": "Text between shortcut keys. Defaults to `then`."
+          },
+          {
             "name": "nativeButton",
             "type": "boolean",
             "required": false,
@@ -7540,6 +7715,13 @@
             "required": false,
             "defaultValue": null,
             "description": "Keyboard shortcut keys displayed at the end of the row. Registering the\nshortcut is up to the application."
+          },
+          {
+            "name": "hotkeysJoinLabel",
+            "type": "string",
+            "required": false,
+            "defaultValue": null,
+            "description": "Text between shortcut keys. Defaults to `then`."
           },
           {
             "name": "nativeButton",

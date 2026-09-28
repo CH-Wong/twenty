@@ -1,0 +1,41 @@
+---
+title: ColorSchemePicker
+description: Choose a light, dark, or system appearance.
+---
+
+import { StoryEmbed } from '/snippets/ui/StoryEmbed.mdx';
+import ColorSchemePickerReference from '/snippets/ui/generated/components/color-scheme-picker.mdx';
+
+`ColorSchemePicker` displays three appearance previews. Your application owns the selected value and the labels.
+
+<StoryEmbed
+  storyId="ui-input-colorschemepicker--default"
+  title="Color scheme choices"
+  height={260}
+/>
+
+```tsx
+import { useState } from 'react';
+import { ColorSchemePicker } from 'twenty-ui/components';
+import { type ColorScheme } from 'twenty-ui/primitives/input';
+
+export const AppearancePicker = () => {
+  const [value, setValue] = useState<ColorScheme>('Light');
+
+  return (
+    <ColorSchemePicker
+      value={value}
+      onChange={setValue}
+      lightLabel="Light"
+      darkLabel="Dark"
+      systemLabel="System settings"
+    />
+  );
+};
+```
+
+Each label is both visible text and the accessible name of its choice. Supply localized `lightLabel`, `darkLabel`, and `systemLabel` values. Selection callbacks still receive `Light`, `Dark`, or `System`.
+
+## Props
+
+<ColorSchemePickerReference />

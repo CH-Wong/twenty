@@ -1,0 +1,39 @@
+---
+title: Callout
+description: Show a notice with an optional action and dismiss button.
+---
+
+import { StoryEmbed } from '/snippets/ui/StoryEmbed.mdx';
+import CalloutReference from '/snippets/ui/generated/components/callout.mdx';
+
+`Callout` displays a title, description, and optional footer action. Import it from `twenty-ui/components`.
+
+<StoryEmbed
+  storyId="ui-feedback-callout--default"
+  title="Callout example"
+  height={260}
+/>
+
+## Labels and dismissal
+
+Your application owns `title`, `description`, and `action.label`. Set `isClosable` to show a dismiss button and pass `closeLabel` for its accessible name. The default is `Close`. Dismissing the notice hides it and calls `onClose` when supplied.
+
+```tsx
+import { Callout } from 'twenty-ui/components';
+
+export const WorkflowNotice = () => (
+  <Callout
+    variant="info"
+    title="Workflow updated"
+    description="New runs will use these settings."
+    isClosable
+    closeLabel="Dismiss workflow notice"
+  />
+);
+```
+
+Pass labels from your application's localization system. Twenty UI does not require an i18n provider.
+
+## Props
+
+<CalloutReference />
